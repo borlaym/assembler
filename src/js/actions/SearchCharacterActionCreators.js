@@ -38,13 +38,13 @@ export default {
     .then((response) => response.json())
     .then((json) => {
       Dispatcher.handleServerAction({
-        type: Constants.CHARACTER_SEARCH_FINISHED,
+        type: Constants.ActionTypes.CHARACTER_SEARCH_FINISHED,
         data: json
       });
     })
     .catch((err) => {
       Dispatcher.handleServerAction({
-        type: Constants.CHARACTER_SEARCH_FAILED,
+        type: Constants.ActionTypes.CHARACTER_SEARCH_FAILED,
         err: err
       });
     });
