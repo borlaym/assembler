@@ -11,7 +11,8 @@ export default React.createClass({
     return (
       <div className='character'>
         <img src={this.props.character.thumbnail} />
-        <span onClick={this.removeCharacter}>&times;</span>
+        <span onClick={this.removeCharacter} className="remove">&times;</span>
+        <p className="name">{this.props.character.name}</p>
       </div>
     );
   }

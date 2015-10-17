@@ -12,7 +12,14 @@ export default {
     CHARACTER_SEARCH_FAILED: null,
     CHARACTER_SEARCH_CLEAR: null,
     TEAM_ADD_CHARACTER: null,
-    TEAM_REMOVE_CHARACTER: null
+    TEAM_REMOVE_CHARACTER: null,
+    VILLAIN_SEARCH_STARTED: null,
+    VILLAIN_SEARCH_FINISHED: null,
+    VILLAIN_SEARCH_FAILED: null,
+    BATTLE_LOADING: null,
+    BATTLE_START: null,
+    BATTLE_RESULTS: null,
+    BATTLE_END: null
   }),
 
   ActionSources: keyMirror({

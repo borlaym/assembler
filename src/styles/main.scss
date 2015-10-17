@@ -8,7 +8,10 @@ html {
 
 	h1, p, h3 {
 		color: $white;
-		text-align: center
+		text-align: center;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.characterSearch {
@@ -74,15 +77,56 @@ html {
 
 		.character {
 			display: inline-block;
+			text-align: center;
 			img {
 				display: block;
 			}
 
-			span {
+			.remove {
 				color: #cc4444;
 				cursor: pointer;
 				margin-top: 10px;
 				font-size: 1.4em;
+			}
+
+			.name {
+				display:none;
+			}
+		}
+
+	}
+
+	a, .btn {
+		border: none;
+		padding: 15px;
+		color: white;
+		border-radius: 4px;
+		background: #338833;
+		display: block;
+		margin: 20px auto;
+		outline: none;
+		text-decoration: none;
+		width: 150px;
+		text-align: center;
+	}
+
+	a.hidden, .btn.hidden {
+		display: none;
+	}
+
+	.battle {
+		.remove {
+			display: none;
+		}
+
+		.villain {
+			text-align: center;
+
+			.character {
+				img {
+					display: block;
+					margin: 10px auto;
+				}
 			}
 		}
 	}

@@ -1,4 +1,11 @@
 import React from 'react';
-import App from './components/App.jsx';
+import { Router, Route } from 'react-router'
+import Assembler from './components/Assembler.jsx';
+import Battle from './components/Battle.jsx'
 
-React.render(<App />, document.getElementById('main'));
+React.render((
+  <Router>
+    <Route path="/" component={Assembler} />
+    <Route path="/battle" component={Battle} />
+  </Router>
+), document.body);

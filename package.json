@@ -41,8 +41,10 @@
     "eslint-plugin-react": "^3.5.1",
     "flux": "^2.1.1",
     "gulp-eslint": "^1.0.0",
+    "history": "^1.12.5",
     "lodash": "^3.10.1",
     "object-assign": "^4.0.1",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "react-router": "^1.0.0-rc3"
   }
 }
