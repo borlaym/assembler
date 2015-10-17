@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import ActionCreators from '../actions/SearchCharacterActionCreators';
 import Config from '../Config';
 import Store from '../stores/SearchStore';
+import TeamStore from '../stores/TeamStore';
 
 export default React.createClass({
 
@@ -17,14 +18,16 @@ export default React.createClass({
 
   componentDidMount() {
     Store.addChangeListener(this._onChange);
+    TeamStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
     Store.removeChangeListener(this._onChange);
+    TeamStore.removeChangeListener(this._onChange);
   },
 
   _onChange() {
-    this.setState(Store.getState())
+    this.setState(Store.getState());
   },
 
   typingCooldown: null,
@@ -79,10 +82,30 @@ export default React.createClass({
     });
   },
 
+  /**
+   * Checks of you reached the team size limit
+   */
+  canAddNewMember() {
+    return TeamStore.getState().characters.length < Config.TEAM_MAX_SIZE;
+  },
+
+  searchPlaceholder() {
+    if (this.canAddNewMember()) return "Search to add a character...";
+    else return "You reached the maximum team size."
+  },
+
+  isDisabled() {
+    if (!this.canAddNewMember()) return "disabled";
+  },
+
   render() {
     return (
       <div className="characterSearch">
-        <input type="search" placeholder="Search to add a character..." onChange={this.onInputChange} ref="search" />
+        <input  type="search" 
+                placeholder={this.searchPlaceholder()} 
+                onChange={this.onInputChange} 
+                ref="search" 
+                disabled={this.isDisabled()}/>
         {this.renderLoadingIndicator()}
         <div className='searchResults'>
           {this.renderResults()}

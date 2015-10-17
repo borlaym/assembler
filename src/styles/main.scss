@@ -24,6 +24,10 @@ html {
 			outline: none;
 		}
 
+		input[disabled=disabled] {
+			background: #ccc;
+		}
+
 		.loadingIndicator {
 			color: black;
 			font-style: 0.8em;
