@@ -9,11 +9,17 @@ export default {
    * Add a character to the team!
    */
   addCharacter(character) {
-  	console.log('actioncreator');
     Dispatcher.handleViewAction({
       type: Constants.ActionTypes.TEAM_ADD_CHARACTER,
       character
     });
+  },
 
+  removeCharacter(character) {
+  	Dispatcher.handleViewAction({
+      type: Constants.ActionTypes.TEAM_REMOVE_CHARACTER,
+      character
+    });
   }
+
 };

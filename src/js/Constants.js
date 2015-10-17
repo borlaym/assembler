@@ -11,7 +11,8 @@ export default {
     CHARACTER_SEARCH_FINISHED: null,
     CHARACTER_SEARCH_FAILED: null,
     CHARACTER_SEARCH_CLEAR: null,
-    TEAM_ADD_CHARACTER: null
+    TEAM_ADD_CHARACTER: null,
+    TEAM_REMOVE_CHARACTER: null
   }),
 
   ActionSources: keyMirror({

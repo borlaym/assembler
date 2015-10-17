@@ -2,6 +2,7 @@ import Dispatcher from '../Dispatcher';
 import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
+import _ from 'lodash';
 
 // data storage
 let _data = [];
@@ -22,6 +23,10 @@ const TeamStore = assign({}, BaseStore, {
     switch (action.type) {
     case Constants.ActionTypes.TEAM_ADD_CHARACTER:
       _data.push(action.character);
+      TeamStore.emitChange();
+      break;
+    case Constants.ActionTypes.TEAM_REMOVE_CHARACTER:
+      _data = _.without(_data, action.character);
       TeamStore.emitChange();
       break;
     }

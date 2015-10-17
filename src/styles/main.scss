@@ -70,6 +70,16 @@ html {
 
 		.character {
 			display: inline-block;
+			img {
+				display: block;
+			}
+
+			span {
+				color: #cc4444;
+				cursor: pointer;
+				margin-top: 10px;
+				font-size: 1.4em;
+			}
 		}
 	}
 
