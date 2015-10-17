@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import TaskList from './TaskList.jsx';
+import SearchCharacter from './SearchCharacter.jsx';
 
 export default React.createClass({
   propTypes: {
@@ -19,9 +20,7 @@ export default React.createClass({
     return (
       <div>
         <h1>Assemblr</h1>
-        <TaskList tasks={tasks} />
-        <button onClick={onAddTask}>Add New</button>
-        <button onClick={onClear}>Clear List</button>
+        <SearchCharacter />
       </div>
     );
   }
