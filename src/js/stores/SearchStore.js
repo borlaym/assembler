@@ -15,7 +15,6 @@ let _data = {
  * Formats the JSON response from the Marvel API into character profiles used by the store
  */
 function formatJSONResponse(json) {
-  console.log(json);
   return json.data.results.map((character) => {
     return {
       id: character.id,
@@ -28,7 +27,7 @@ function formatJSONResponse(json) {
 }
 
 // Facebook style store creation.
-const TodoStore = assign({}, BaseStore, {
+const SearchStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getState() {
     return assign({}, _data);
@@ -38,18 +37,24 @@ const TodoStore = assign({}, BaseStore, {
   dispatcherIndex: Dispatcher.register(function handleAction(payload) {
     const action = payload.action;
     switch (action.type) {
+    case Constants.ActionTypes.CHARACTER_SEARCH_CLEAR:
+      _data.isLoading = false;
+      _data.results = [];
+      SearchStore.emitChange();
+      break;
     case Constants.ActionTypes.CHARACTER_SEARCH_STARTED:
       _data.isLoading = true;
-      TodoStore.emitChange();
+      _data.results = [];
+      SearchStore.emitChange();
       break;
     case Constants.ActionTypes.CHARACTER_SEARCH_FINISHED:
     case Constants.ActionTypes.CHARACTER_SEARCH_FAILED:
       _data.isLoading = false;
       _data.results = formatJSONResponse(action.data);
-      TodoStore.emitChange();
+      SearchStore.emitChange();
       break;
     }
   })
 });
 
-export default TodoStore;
+export default SearchStore;

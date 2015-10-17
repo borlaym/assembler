@@ -5,21 +5,20 @@ import URL from 'url';
 
 /* eslint-disable no-console */
 
-var url = URL.format({
-  host: Config.MARVEL_API_URI_HOST,
-  pathname: Config.MARVEL_API_URI_PATHNAME + Config.MARVEL_API_URI_CHARACTERS,
-  query: {
-    name: 'Hawkeye',
-    apikey: Config.MARVEL_API_PUBLIC_KEY
-  }
-});
-
 export default {
 
   /**
    * Initiate a search for a character on the Marvel api
    */
   startSearch(text) {
+
+    text = text.trim();
+
+    if (text === "") {
+      return Dispatcher.handleViewAction({
+        type: Constants.ActionTypes.CHARACTER_SEARCH_CLEAR
+      });
+    }
 
     Dispatcher.handleViewAction({
       type: Constants.ActionTypes.CHARACTER_SEARCH_STARTED

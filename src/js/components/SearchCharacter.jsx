@@ -5,7 +5,7 @@ import Store from '../stores/SearchStore';
 
 export default React.createClass({
 
-  TYPING_COOLDOWN_DURATION: 200,
+  TYPING_COOLDOWN_DURATION: 600,
 
   getInitialState() {
     return Store.getState();
@@ -38,14 +38,27 @@ export default React.createClass({
     }, this.TYPING_COOLDOWN_DURATION);
   },
 
+  resetSearch() {
+    this.refs.search.getDOMNode().value = '';
+    ActionCreators.startSearch("");
+  },
+
   /**
    * Renders a loading indicator while we are fetching results from the server, nothing otherwise
    */
   renderLoadingIndicator() {
     if (this.state.isLoading) {
-      return (<div class="loadingIndicator">Loading...</div>);
+      return (<div className="loadingIndicator">Loading...</div>);
     }
     return "";
+  },
+
+  /**
+   * Select a character, also reset search value
+   */
+  selectCharacter(character, event) {
+    this.resetSearch();
+    this.props.onSelect(character);
   },
 
   /**
@@ -54,7 +67,7 @@ export default React.createClass({
   renderResults() {
     return this.state.results.map((character) => {
       return (
-        <div class='characterSearchResult'>
+        <div className='characterSearchResult' key={character.id} onClick={this.selectCharacter.bind(this, character)}>
           <img src={character.thumbnail} />
           <h2>{character.name}</h2>
         </div>
@@ -64,7 +77,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div class="characterSearch">
+      <div className="characterSearch">
         <input type="search" placeholder="Search for a character..." onChange={this.onInputChange} ref="search" />
         {this.renderLoadingIndicator()}
         {this.renderResults()}

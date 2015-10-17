@@ -9,7 +9,9 @@ export default {
     TASK_ADDED: null,
     CHARACTER_SEARCH_STARTED: null,
     CHARACTER_SEARCH_FINISHED: null,
-    CHARACTER_SEARCH_FAILED: null
+    CHARACTER_SEARCH_FAILED: null,
+    CHARACTER_SEARCH_CLEAR: null,
+    TEAM_ADD_CHARACTER: null
   }),
 
   ActionSources: keyMirror({
