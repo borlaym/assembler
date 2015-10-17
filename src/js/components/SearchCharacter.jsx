@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import ActionCreators from '../actions/SearchCharacterActionCreators';
 import Config from '../Config';
 import Store from '../stores/SearchStore';
 
 export default React.createClass({
+
+  propTypes: {
+    onSelect: PropTypes.func.isRequired,
+  },
 
   TYPING_COOLDOWN_DURATION: 600,
 
@@ -80,7 +84,9 @@ export default React.createClass({
       <div className="characterSearch">
         <input type="search" placeholder="Search for a character..." onChange={this.onInputChange} ref="search" />
         {this.renderLoadingIndicator()}
-        {this.renderResults()}
+        <div className='searchResults'>
+          {this.renderResults()}
+        </div>
       </div>
     );
   }

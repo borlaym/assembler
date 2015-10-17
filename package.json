@@ -1,7 +1,7 @@
 {
   "name": "assemblr",
   "version": "0.1.0",
-  "description": "Assemblr: Assemble your own Avengers team",
+  "description": "Assembler: Assemble your own Avengers team",
   "author": "",
   "license": "MIT",
   "devDependencies": {

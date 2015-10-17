@@ -18,8 +18,12 @@ module.exports = {
     dest: dest + '/styles',
     settings: {
       indentedSyntax: false, // Enable .sass syntax?
-      imagePath: '/images' // Used by the image-url helper
+      imagePath: '/img' // Used by the image-url helper
     }
+  },
+  images: {
+    src: src + '/img/**/*.*',
+    dest: dest + '/img'
   },
   browserify: {
     settings: {

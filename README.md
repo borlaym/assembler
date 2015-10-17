@@ -1,7 +1,7 @@
 
-# Assemblr (assemblr)
+# Assembler
 
-> Assemble your own Avengers team
+Assemble your own Avengers team
 
 ## Running your project
 
