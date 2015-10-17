@@ -82,7 +82,7 @@ export default React.createClass({
   render() {
     return (
       <div className="characterSearch">
-        <input type="search" placeholder="Search for a character..." onChange={this.onInputChange} ref="search" />
+        <input type="search" placeholder="Search to add a character..." onChange={this.onInputChange} ref="search" />
         {this.renderLoadingIndicator()}
         <div className='searchResults'>
           {this.renderResults()}

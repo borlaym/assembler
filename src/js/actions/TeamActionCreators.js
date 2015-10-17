@@ -9,7 +9,7 @@ export default {
    * Add a character to the team!
    */
   addCharacter(character) {
-
+  	console.log('actioncreator');
     Dispatcher.handleViewAction({
       type: Constants.ActionTypes.TEAM_ADD_CHARACTER,
       character

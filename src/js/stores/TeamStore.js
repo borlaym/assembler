@@ -9,8 +9,10 @@ let _data = [];
 // Facebook style store creation.
 const TeamStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
-  getAll() {
-    return _data.concat([]);
+  getState() {
+    return {
+      characters: _data.concat([])
+    }
   },
 
   // register store with dispatcher, allowing actions to flow through
@@ -20,7 +22,6 @@ const TeamStore = assign({}, BaseStore, {
     switch (action.type) {
     case Constants.ActionTypes.TEAM_ADD_CHARACTER:
       _data.push(action.character);
-      console.log("TEAM", _data);
       TeamStore.emitChange();
       break;
     }
