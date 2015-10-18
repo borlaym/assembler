@@ -51,6 +51,10 @@ const BattleStore = assign({}, BaseStore, {
       _data.state = BATTLE_STATES.BATTLE;
       BattleStore.emitChange();
       break;
+    case Constants.ActionTypes.BATTLE_RESULTS:
+      if (action.villain) _data.villain.defeated = true;
+      BattleStore.emitChange();
+      break;
     }
   })
 });

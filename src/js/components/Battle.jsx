@@ -62,7 +62,7 @@ export default React.createClass({
    * Go to the next fight
    */
   nextFight() {
-    BattleActionCreators.getNextVillain();
+    BattleActionCreators.battleNextVillain(this.state.team.characters);
   },
 
   /**
@@ -84,6 +84,7 @@ export default React.createClass({
   },
 
   render() {
+    console.log(this.state);
     if (!this.canFight()) return this.renderNoTeam();
     return (
       <div className="battle">

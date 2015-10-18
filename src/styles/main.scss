@@ -124,11 +124,26 @@ html {
 
 			.character {
 				img {
+					height: 225px;
+					width: 150px;
 					display: block;
 					margin: 10px auto;
 				}
 			}
 		}
+	}
+
+	.character {
+		position: relative;
+
+		.dead {
+			position: absolute;
+			top: 12px;
+			font-size: 200px;
+			margin-left: -65px;
+			color: red;
+		}
+
 	}
 
 }
