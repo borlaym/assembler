@@ -90,6 +90,7 @@ html {
 			width: 80%;
 			left: 50%;
 			margin-left: -40%;
+			z-index: 3;
 
 			.characterSearchResult {
 
@@ -179,6 +180,7 @@ html {
 
 	.character {
 		position: relative;
+		z-index: 2;
 
 		.dead {
 			position: absolute;

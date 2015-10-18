@@ -73,7 +73,7 @@ export default {
       host: Config.MARVEL_API_URI_HOST,
       pathname: Config.MARVEL_API_URI_PATHNAME + Config.MARVEL_API_URI_COMICS,
       query: {
-        characters: ids,
+        sharedAppearances: ids,
         apikey: Config.MARVEL_API_PUBLIC_KEY,
         format: 'comic',
         formatType: 'comic',
