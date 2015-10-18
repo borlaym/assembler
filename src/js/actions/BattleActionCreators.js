@@ -41,15 +41,18 @@ export default {
       var villain = json.data.results[0];
 
       //Then figth with all characters
-      async.series(characters.map((character) => {
-        return this.fight.bind(this, character, villain)
-      }), function(victory) {
-        if (victory) {
-          return alert("victory");
-        } else {
-          alert("defeat");
-        }
-      });
+      setTimeout(() => {
+        async.series(characters.map((character) => {
+          return this.fight.bind(this, character, villain)
+        }), function(victory) {
+          if (victory) return Dispatcher.handleViewAction({
+              type: Constants.ActionTypes.BATTLE_VICTORY,
+            });
+          return Dispatcher.handleViewAction({
+            type: Constants.ActionTypes.BATTLE_DEFEAT,
+          });
+        });
+      }, 1500);
 
     })
     .catch((err) => {
@@ -86,13 +89,13 @@ export default {
           type: Constants.ActionTypes.BATTLE_RESULTS,
           villain
         });
-        return callback(true)
+        return setTimeout(callback.bind(null, true), 2000);
       } else {
         Dispatcher.handleViewAction({
           type: Constants.ActionTypes.BATTLE_RESULTS,
           hero: character
         });
-        return callback(null);
+        return setTimeout(callback, 2000);
       }
     })
     .catch((err) => console.log(err));

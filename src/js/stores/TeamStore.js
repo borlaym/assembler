@@ -13,6 +13,7 @@ let _data = [];
 function damageHero(hero) {
   var hero = _.find(_data, (character) => character.id === hero.id);
   hero.defeated = true;
+  hero.isFighting = false;
 }
 
 // Facebook style store creation.
@@ -39,8 +40,23 @@ const TeamStore = assign({}, BaseStore, {
       _data = _.without(_data, action.character);
       TeamStore.emitChange();
       break;
+    case Constants.ActionTypes.BATTLE_START:
+      _data.forEach((character) => character.isFighting = true);
+      TeamStore.emitChange();
+      break;
     case Constants.ActionTypes.BATTLE_RESULTS:
       if (action.hero) damageHero(action.hero);
+      TeamStore.emitChange();
+      break;
+    case Constants.ActionTypes.BATTLE_VICTORY:
+      _data.forEach((character) => {
+        character.isFighting = false,
+        character.defeated = false
+      });
+      TeamStore.emitChange();
+      break;
+    case Constants.ActionTypes.BATTLE_DEFEAT:
+      _data.forEach((character) => character.isFighting = false);
       TeamStore.emitChange();
       break;
     }

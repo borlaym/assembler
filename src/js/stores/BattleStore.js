@@ -7,7 +7,8 @@ import keyMirror from 'react/lib/keyMirror';
 const BATTLE_STATES = keyMirror({
     NO_BATTLE: null,
     LOADING: null,
-    BATTLE: null
+    BATTLE: null,
+    DEFEAT: null
 });
 
 /**
@@ -20,7 +21,8 @@ function formatJSONResponse(json) {
     strenght: character.comics.available,
     description: character.description,
     name: character.name,
-    thumbnail: character.thumbnail.path + '/portrait_xlarge.' + character.thumbnail.extension
+    thumbnail: character.thumbnail.path + '/portrait_xlarge.' + character.thumbnail.extension,
+    isFighting: true
   }
 }
 
@@ -53,6 +55,14 @@ const BattleStore = assign({}, BaseStore, {
       break;
     case Constants.ActionTypes.BATTLE_RESULTS:
       if (action.villain) _data.villain.defeated = true;
+      BattleStore.emitChange();
+      break;
+    case Constants.ActionTypes.BATTLE_VICTORY:
+      _data.state = BATTLE_STATES.NO_BATTLE;
+      BattleStore.emitChange();
+      break;
+    case Constants.ActionTypes.BATTLE_DEFEAT:
+      _data.state = BATTLE_STATES.DEFEAT;
       BattleStore.emitChange();
       break;
     }

@@ -2,6 +2,50 @@
 
 $white: #dddddd;
 
+@keyframes fight {
+	0% {
+		top: 0px;
+	}
+
+	25% {
+		top: 5px;
+	}
+
+	50% {
+		top: 0px;
+	}
+
+	75% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+	}
+}
+
+@-webkit-keyframes fight {
+	0% {
+		top: 0px;
+	}
+
+	25% {
+		top: 5px;
+	}
+
+	50% {
+		top: 0px;
+	}
+
+	75% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+	}
+}
+
 html {
 
 	background: #22222c;
@@ -138,12 +182,17 @@ html {
 
 		.dead {
 			position: absolute;
-			top: 12px;
+			top: 0px;
 			font-size: 200px;
 			margin-left: -65px;
 			color: red;
 		}
 
+	}
+
+	.character.fighting {
+		animation: fight 1s infinite;
+		-webkit-animation: fight 1s infinite;
 	}
 
 }

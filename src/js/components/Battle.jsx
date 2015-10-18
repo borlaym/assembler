@@ -84,7 +84,6 @@ export default React.createClass({
   },
 
   render() {
-    console.log(this.state);
     if (!this.canFight()) return this.renderNoTeam();
     return (
       <div className="battle">
