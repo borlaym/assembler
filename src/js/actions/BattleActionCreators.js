@@ -1,8 +1,8 @@
 import Dispatcher from '../Dispatcher';
 import Constants from '../Constants';
-import URL from 'url';
 import Config from '../Config';
-import async from 'async'
+import URL from 'url';
+import async from 'async';
 
 /* eslint-disable no-console */
 
@@ -84,7 +84,7 @@ export default {
     fetch(url)
     .then((response) => response.json())
     .then((json) => {
-      if (json.data.total > 0) {
+      if (json.data.total >= Config.COMICS_NEEDED_TO_WIN) {
         Dispatcher.handleViewAction({
           type: Constants.ActionTypes.BATTLE_RESULTS,
           villain
@@ -101,5 +101,11 @@ export default {
     .catch((err) => console.log(err));
 
   },
+
+  reset() {
+    Dispatcher.handleViewAction({
+      type: Constants.ActionTypes.BATTLE_RESET
+    });
+  }
 
 };

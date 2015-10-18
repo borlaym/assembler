@@ -83,7 +83,23 @@ export default React.createClass({
     );
   },
 
+  toAssembler() {
+    BattleActionCreators.reset();
+    window.location.hash = "";
+  },
+
+  renderDefeat() {
+    return (
+      <div>
+        <h1>Defeat!</h1>
+        <p>You´ll need more powerful heroes next time.</p>
+        <button className="btn" onClick={this.toAssembler}>Avengers Assemble!</button>
+      </div>
+    )
+  },
+
   render() {
+    if (this.state.battle.state === BattleStore.BATTLE_STATES.DEFEAT) return this.renderDefeat();
     if (!this.canFight()) return this.renderNoTeam();
     return (
       <div className="battle">

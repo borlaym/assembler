@@ -44,6 +44,10 @@ const BattleStore = assign({}, BaseStore, {
     const action = payload.action;
 
     switch (action.type) {
+    case Constants.ActionTypes.BATTLE_RESET:
+      _data.state = BATTLE_STATES.NO_BATTLE;
+      BattleStore.emitChange();
+      break;
     case Constants.ActionTypes.BATTLE_LOADING:
       _data.state = BATTLE_STATES.LOADING;
       BattleStore.emitChange();

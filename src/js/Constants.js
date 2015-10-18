@@ -20,7 +20,8 @@ export default {
     BATTLE_START: null,
     BATTLE_RESULTS: null,
     BATTLE_VICTORY: null,
-    BATTLE_DEFEAT: null
+    BATTLE_DEFEAT: null,
+    BATTLE_RESET: null
   }),
 
   ActionSources: keyMirror({

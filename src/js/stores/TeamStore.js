@@ -56,7 +56,7 @@ const TeamStore = assign({}, BaseStore, {
       TeamStore.emitChange();
       break;
     case Constants.ActionTypes.BATTLE_DEFEAT:
-      _data.forEach((character) => character.isFighting = false);
+      _data = [];
       TeamStore.emitChange();
       break;
     }
